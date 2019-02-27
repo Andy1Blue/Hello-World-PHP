@@ -78,7 +78,7 @@
 
         // Checking e-mail
         if($validation == true) {
-          if($connection->query("insert into $db_user_table values(null, '$login', '$password1', '$email', 0, 0, 0, 30, null, ' ')")) {
+          if($connection->query("insert into $db_user_table values(null, '$login', '$password1', '$email', 0, 0, 0, now() + INTERVAL 30 DAY, null, ' ')")) {
             $_SESSION['registerSuccess'] = true;
             header('Location: index.php');
           } else {
