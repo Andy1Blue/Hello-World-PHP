@@ -15,10 +15,19 @@
   <body>
 
     <?php
+      $actualDate = new DateTime('now');
+      $endTime = new DateTime($_SESSION['premium']);
+      $diff = $actualDate->diff($endTime);
+
       echo "<h1>".$_SESSION['user']." panel</h1>";
       echo "<p><a href='logout.php'>Logout</a></p>";
       echo "Hello <b>".$_SESSION['user']."</b> (<small>".$_SESSION['email']."</small>)!";
-      echo "<p>Premium: ".$_SESSION['premium']."</p>";
+      if($actualDate<$endTime) {
+        echo "<p>Premium expiration date: ".$_SESSION['premium']." (".$diff->h." hours)</p>";
+      } else {
+        echo "<p>Premium expiration date: no premium</p>";
+      }
+
     ?>
 
   </body>
