@@ -1,0 +1,25 @@
+body {
+  padding: 20px;
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+  width: 100px;
+}
+
+input[type=submit] {
+  width: 114px;
+}
+
+div {
+  margin: 5px 0 5px 2px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  display: block;
+  padding: 5px;
+  margin: 5px 0 5px 2px;
+}
