@@ -12,6 +12,7 @@
 
     $validation = true;
 
+    // Checking login
     if((strlen($login) <= 3) || (strlen($login) >= 25)) {
       $_SESSION['e_login'] = "Login must be between 3 - 25 characters.";
       $validation = false;
@@ -22,12 +23,14 @@
       $validation = false;
     }
 
+    // Checking e-mail
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
     if((filter_var($email, FILTER_VALIDATE_EMAIL) == false)) {
       $_SESSION['e_email'] = "Check your e-mail.";
       $validation = false;
     }
 
+    // Checking password
     if((strlen($password1)<=8) || (strlen($password1)>=30)) {
       $_SESSION['e_password'] = "Password must be between 8 - 30 characters.";
       $validation = false;
@@ -40,6 +43,7 @@
 
     $password1 = password_hash($password1, PASSWORD_DEFAULT);
 
+    // Checking ReCaptcha
     $checkReCaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$recaptcha_secret_key.'&response='.$_POST['g-recaptcha-response']);
 
     $responseReCaptcha = json_decode($checkReCaptcha);
@@ -57,11 +61,13 @@
         $result = $connection->query("select id from $db_user_table where email='$email'");
         if(!$result) throw new Exception($connection->error);
         $emailExist = $result->num_rows;
+        // Checking e-mail
         if($emailExist>0) {
           $_SESSION['e_email'] = "This e-mail is exist.";
           $validation = false;
         }
 
+        // Checking login
         $result = $connection->query("select id from $db_user_table where user='$login'");
         if(!$result) throw new Exception($connection->error);
         $emailExist = $result->num_rows;
@@ -70,6 +76,7 @@
           $validation = false;
         }
 
+        // Checking e-mail
         if($validation == true) {
           if($connection->query("insert into $db_user_table values(null, '$login', '$password1', '$email', 0, 0, 0, 30, null, ' ')")) {
             $_SESSION['registerSuccess'] = true;
