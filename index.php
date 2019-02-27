@@ -15,7 +15,7 @@
     <meta charset="utf-8">
     <title>Login form</title>
   </head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <body>
 
     <h1>Hello World PHP - login form!</h1>

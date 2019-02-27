@@ -101,7 +101,7 @@
     <title>Sing up new user</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <body>
 
     <h1>Register form</h1>

@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <title>User panel</title>
   </head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <body>
 
     <?php
